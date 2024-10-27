@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MONGO_URI_LOCAL = exports.REFRESH_TOKEN_SECRET = exports.ACCESS_TOKEN_SECRET = exports.SMS_GAITWAY_CUSTOMER_ID = exports.SMS_GAITWAY_AUTH_TOKEN = exports.SMS_GAITWAY_URL = exports.MONGO_URI = exports.PORT = void 0;
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+const PORT = process.env.PORT;
+exports.PORT = PORT;
+const MONGO_URI = process.env.MONGO_URI;
+exports.MONGO_URI = MONGO_URI;
+const MONGO_URI_LOCAL = process.env.MONGO_URi_LOCAL;
+exports.MONGO_URI_LOCAL = MONGO_URI_LOCAL;
+const SMS_GAITWAY_URL = process.env.SMS_GAITWAY_URL;
+exports.SMS_GAITWAY_URL = SMS_GAITWAY_URL;
+const SMS_GAITWAY_AUTH_TOKEN = process.env.SMS_GAITWAY_AUTH_TOKEN;
+exports.SMS_GAITWAY_AUTH_TOKEN = SMS_GAITWAY_AUTH_TOKEN;
+const SMS_GAITWAY_CUSTOMER_ID = process.env.SMS_GAITWAY_CUSTOMER_ID;
+exports.SMS_GAITWAY_CUSTOMER_ID = SMS_GAITWAY_CUSTOMER_ID;
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
+exports.ACCESS_TOKEN_SECRET = ACCESS_TOKEN_SECRET;
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
+exports.REFRESH_TOKEN_SECRET = REFRESH_TOKEN_SECRET;
