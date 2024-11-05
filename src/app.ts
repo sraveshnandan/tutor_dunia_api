@@ -3,6 +3,9 @@ import cors from "cors";
 import userRoutes from "./routes/user.routes";
 import tutorRoutes from "./routes/tutor.routes";
 import healthRoutes from "./routes/health.routes";
+import categoryRoutes from "./routes/category.routes";
+import subjectRoutes from "./routes/subject.routes";
+import sessionRoutes from "./routes/session.routes"
 const app = express();
 
 
@@ -16,7 +19,7 @@ app.use(cors({
 
 
 // api routes 
-app.use("/api/v1", userRoutes, tutorRoutes, healthRoutes);
+app.use("/api/v1", userRoutes, tutorRoutes, healthRoutes, categoryRoutes, sessionRoutes, subjectRoutes);
 
 
 

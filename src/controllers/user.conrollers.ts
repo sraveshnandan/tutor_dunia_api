@@ -39,12 +39,12 @@ export const SendOTP = async (req: any, res: any) => {
 export const VerifyOTp = async (req: Request, res: Response) => {
     try {
         const { phone_number, otp, verification_id } = req.body;
-        if (!phone_number || otp || verification_id) {
-            return res.status(400).json({
-                success: false,
-                message: "OTP phone number and Verification Id are required."
-            })
-        }
+        // if (!phone_number. && !otp && !verification_id) {
+        //     return res.status(400).json({
+        //         success: false,
+        //         message: "OTP phone number and Verification Id are required."
+        //     })
+        // }
         const otp_verify_res = await VerifyOtp(phone_number, otp, verification_id);
         if (!otp_verify_res) {
             return res.status(501).json({
