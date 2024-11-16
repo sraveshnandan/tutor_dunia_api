@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { ACCESS_TOKEN_SECRET } from "../config/credientials";
 import { User } from "../database/models/user.model";
+import { Tutor } from "../database/models/tutor.model";
 export const Authenticate = async (req: Request | any, res: Response, next: NextFunction) => {
     try {
         const { token } = req.headers;
@@ -20,7 +21,11 @@ export const Authenticate = async (req: Request | any, res: Response, next: Next
                 message: "Token expired."
             })
         }
-        const user = await User.findById(decoded?.id);
+
+
+        let user = null;
+        user = await User.findOne({ _id: decoded.id });
+
 
         if (!user) {
             return res.status(404).json({
@@ -29,7 +34,7 @@ export const Authenticate = async (req: Request | any, res: Response, next: Next
             })
         };
 
-        req.user = user._id;
+        req.user = user?._id;
         next()
     } catch (error: any) {
         return res.status(500).json({

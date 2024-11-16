@@ -131,8 +131,6 @@ export const UpdateTutorProfile = async (req: Request | any, res: Response) => {
         })
     }
 }
-
-
 export const GetAllTutors = async (req: Request, res: Response) => {
     try {
         const { limit, id, category, subject, name } = req.query;
@@ -151,7 +149,7 @@ export const GetAllTutors = async (req: Request, res: Response) => {
         if (name) {
             query.name = { $regex: name, $options: "i" };
         }
-        const tutors = await Tutor.find(query).limit(Number(limit) || 10).sort({ createdAt: -1 });
+        const tutors = await Tutor.find(query).limit(Number(limit) || 10).sort({ createdAt: -1 }).populate("categories").populate("subjects");
         if (!tutors.length) {
             return res.status(200).json({
                 success: false,
@@ -171,3 +169,4 @@ export const GetAllTutors = async (req: Request, res: Response) => {
         })
     }
 }
+

@@ -1,5 +1,5 @@
 #  stage 1 
-FROM node:18 AS builder
+FROM node:lts-buster-slim AS builder
 
 WORKDIR /build
 
@@ -13,7 +13,7 @@ RUN npm run build
 
 # stage 2 
 
-FROM node:18-alipine
+FROM node:lts-buster-slim
 
 WORKDIR /app
 
@@ -26,4 +26,4 @@ COPY --from=builder /build/package.json ./package.json
 
 EXPOSE 5000
 
-CMD [ "node","./dist/app.js" ]
+CMD [ "node","./dist/server.js" ]

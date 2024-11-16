@@ -1,6 +1,9 @@
 node_modules
 
 .env
-
 dist
-tutor-dunia-firebase-adminsdk-l39iv-e896ba9038.json
+.envgg
+
+data.env
+
+*.env
