@@ -23,6 +23,8 @@ COPY --from=builder /build/node_modules ./node_modules
 
 COPY --from=builder /build/package.json ./package.json
 
+RUN rm -rf /app/node_modules/.bin /app/node_modules/*/test /app/node_modules/*/docs
+
 
 EXPOSE 5000
 

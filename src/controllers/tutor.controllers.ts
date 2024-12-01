@@ -16,6 +16,7 @@ export const CreateTutor = async (req: Request, res: Response) => {
             categories,
             monthly_rate,
             address,
+            ...req.body
         }
 
         const tutor = await Tutor.create(newTutorPayload);

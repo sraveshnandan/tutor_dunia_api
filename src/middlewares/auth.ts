@@ -43,3 +43,43 @@ export const Authenticate = async (req: Request | any, res: Response, next: Next
         })
     }
 }
+export const AuthenticateTutor = async (req: Request | any, res: Response, next: NextFunction) => {
+    try {
+        const { token } = req.headers;
+        if (!token) {
+            return res.status(401).json({
+                success: false,
+                message: "Authentication needed."
+            })
+        }
+
+        const decoded: any = jwt.verify(token as string, ACCESS_TOKEN_SECRET!);
+
+        if (!decoded) {
+            return res.status(401).json({
+                success: false,
+                message: "Token expired."
+            })
+        }
+
+
+        let user = null;
+        user = await Tutor.findOne({ _id: decoded.id });
+
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "Invalid Token or expired."
+            })
+        };
+
+        req.user = user?._id;
+        next()
+    } catch (error: any) {
+        return res.status(500).json({
+            success: false,
+            message: "Invalid or expired token."
+        })
+    }
+}
